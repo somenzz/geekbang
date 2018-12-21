@@ -43,7 +43,31 @@ def kinds_of_decompose(num,result):
                     print(newresult)
                 else:
                     kinds_of_decompose(num // i, newresult)
-            
+
+def kids_of_decompose2(num,result):
+    '''
+    一个整数可以被分解为多个整数的乘积，
+    例如，6 可以分解为 2x3。
+    请使用递归编程的方法，为给定的整数 n，找到所有可能的分解（1 在解中最多只能出现 1 次）。
+    例如，输入 8，输出是可以是 1x8, 8x1, 2x4, 4x2, 1x2x2x2, 1x2x4, ……
+    修复部分选项缺失的bug 
+    '''
+
+    if num == 1:
+        if 1 not in result:
+            result.append(1)
+        print(result)
+    else:
+        for i in range(1,num+1):
+            if 1 in result:
+                if i == 1:
+                    continue
+            if num % i == 0:
+                newresult = result.copy()
+                newresult.append(i)
+                decompose(num // i, newresult)
+
+
           
 if __name__ == "__main__":
     kinds_of_reward(5,[])
@@ -66,3 +90,18 @@ if __name__ == "__main__":
 # [2, 2, 1, 2]
 # [2, 1, 4]
 # [1, 8]
+    kinds_of_decompose2(8,[])
+# [1, 2, 2, 2]
+# [1, 2, 4]
+# [1, 4, 2]
+# [1, 8]
+# [2, 1, 2, 2]
+# [2, 1, 4]
+# [2, 2, 1, 2]
+# [2, 2, 2, 1]
+# [2, 4, 1]
+# [4, 1, 2]
+# [4, 2, 1]
+# [8, 1]
+
+
