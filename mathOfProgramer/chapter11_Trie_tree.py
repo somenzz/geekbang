@@ -44,7 +44,7 @@ def d_print(node):
 
 if __name__ == "__main__":
     keys = ['my','name','mine','zheng','zhen']
-    search_keys = ['my','name','mine','zheng','zhen']
+    search_keys = ['my','name','mine','zheng','zheggn']
     for key in keys:
         insert(key)
 
