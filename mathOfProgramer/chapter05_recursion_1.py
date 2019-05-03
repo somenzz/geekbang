@@ -44,7 +44,7 @@ def kinds_of_decompose(num,result):
                 else:
                     kinds_of_decompose(num // i, newresult)
 
-def kids_of_decompose2(num,result):
+def kinds_of_decompose2(num,result):
     '''
     一个整数可以被分解为多个整数的乘积，
     例如，6 可以分解为 2x3。
@@ -65,7 +65,7 @@ def kids_of_decompose2(num,result):
             if num % i == 0:
                 newresult = result.copy()
                 newresult.append(i)
-                decompose(num // i, newresult)
+                kinds_of_decompose2(num // i, newresult)
 
 
           
