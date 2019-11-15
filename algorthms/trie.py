@@ -79,6 +79,57 @@ class Trie(object):
                 node = node.get(p)
             else:
                 return get_key(prefix,node)
+    @staticmethod
+    def levenshtein_dp(s: str, t: str) -> int:
+        '''
+        计算莱文斯坦距离（Levenshtein distance），距离越小，说明两个单词越相近
+        :param s:
+        :param t:
+        :return:
+        '''
+        m, n = len(s), len(t)
+        table = [[0] * (n + 1) for _ in range(m + 1)]
+        table[0] = [j for j in range(n + 1)]
+        # print(table)
+        for i in range(m + 1):
+            table[i][0] = i
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                table[i][j] = min(1 + table[i - 1][j], 1 + table[i][j - 1],
+                                  int(s[i - 1] != t[j - 1]) + table[i - 1][j - 1])
+        for t in table:
+            print(t)
+        return table[-1][-1]
+
+    def get_all_words_of_trie(self):
+        words = []
+        for k in self.root.keys():
+            words.extend(self.get_start(k))
+        return words
+
+    def get_right_word(self,input_word):
+        '''
+        输入一个单词，返回正确的单词
+        :param input_word:
+        :return:
+        '''
+        words = self.get_all_words_of_trie()
+        right_word = input_word
+        min_distance = 99999
+        for item in words:
+            distance = self.levenshtein_dp(input_word,item)
+            if min_distance >  distance:
+                min_distance = distance
+                right_word = item
+        return right_word
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -87,7 +138,7 @@ if __name__ == "__main__":
     trie.insert("中国")
     trie.insert("中国人")
     trie.insert("中华人民共和国")
-    print(trie.root)
+    # print(trie.root)
     trie.insert("Python")
     trie.insert("Python 算法")
     trie.insert("Python web")
@@ -95,8 +146,11 @@ if __name__ == "__main__":
     trie.insert("Python web 开发 视频教程")
     trie.insert("Python 算法 源码")
     trie.insert("Perl 算法 源码")
-    print(trie.search("Perl"))
-    print(trie.search("Perl 算法 源码"))
-    print((trie.get_start('P')))
-    print((trie.get_start('Python web')))
-    print((trie.get_start('Python 算')))
+    # print(trie.search("Perl"))
+    # print(trie.search("Perl 算法 源码"))
+    # print((trie.get_start('P')))
+    # print((trie.get_start('Python web')))
+    # print((trie.get_start('Python 算')))
+    # print(trie.get_all_words_of_trie())
+
+    print(trie.levenshtein_dp("facbok","facebook"))
