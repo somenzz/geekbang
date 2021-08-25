@@ -28,7 +28,7 @@ class BitMap(object):
         bit_index = self.get_bit_index(num)
         self.array[element_index] = self.array[element_index] | (1 << bit_index)
 
-    def find(self, num):
+    def get(self, num):
         """
         查找该数是否存在与bitmap中
         """
@@ -62,7 +62,7 @@ def main():
     # 查询数据是否存在于bitmap中
     results = []
     for i in range(max(array_list) + 1):
-        if bitmap.find(i):
+        if bitmap.get(i):
             results.append(i)
     print(results)
 
