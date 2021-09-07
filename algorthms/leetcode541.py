@@ -20,11 +20,11 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    # assert "cbadefg" == solution.reverseStr("abcdefg", 3)
+    assert "cbadefg" == solution.reverseStr("abcdefg", 3)
     assert "gfedcba" == solution.reverseStr("abcdefg", 8)
-    # assert "bacd" == solution.reverseStr("abcd", 2)
-    # assert "dcba" == solution.reverseStr("abcd", 4)
-    # assert "dcbaefg" == solution.reverseStr("abcdefg", 4)
+    assert "bacd" == solution.reverseStr("abcd", 2)
+    assert "dcba" == solution.reverseStr("abcd", 4)
+    assert "dcbaefg" == solution.reverseStr("abcdefg", 4)
     assert "fdcqkmxwholhytmhafpesaentdvxginrjlyqzyhehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqllgsqddebemjanqcqnfkjmi" == solution.reverseStr(
         "hyzqyljrnigxvdtneasepfahmtyhlohwxmkqcdfehybknvdmfrfvtbsovjbdhevlfxpdaovjgunjqlimjkfnqcqnajmebeddqsgl",
         39)
